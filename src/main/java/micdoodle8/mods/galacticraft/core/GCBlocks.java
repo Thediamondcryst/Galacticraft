@@ -236,7 +236,7 @@ public class GCBlocks
         block.setHarvestLevel(toolClass, level, block.getStateFromMeta(meta));
     }
 
-    public static void doOtherModsTorches()
+    public static void doOtherModsTorches(IForgeRegistry<Block> registry)
     {
         BlockUnlitTorch torch;
         BlockUnlitTorch torchLit;
@@ -265,6 +265,8 @@ public class GCBlocks
                 GCBlocks.otherModTorchesLit.add(torchLit);
                 registerBlock(torch, ItemBlockGC.class);
                 registerBlock(torchLit, ItemBlockGC.class);
+                registry.register(torch);
+                registry.register(torchLit);
                 BlockUnlitTorch.register(torch, torchLit, modTorch);
                 GCLog.info("Galacticraft: activating Tinker's Construct compatibility.");
             }
